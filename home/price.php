@@ -1,13 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['uid'])){
-    echo "";
-    }else{
+if(!isset($_SESSION['uid'])){
     header('location: ../index.php');
-    }
-
-?>
-<?php
+    exit();
+}
 include('header.php');
 ?>
 
@@ -16,204 +12,301 @@ include('header.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing</title>
+    <title>Pricing | Rapid Courier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #7f7fd5;
+            --secondary-color: #86a8e7;
+            --tertiary-color: #91eae4;
+            --text-color: #2D3748;
+            --light-gray: #F7FAFC;
+            --border-color: #E2E8F0;
+            --white: #FFFFFF;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa; /* Light background color */
-            color: #333333; /* Dark text color */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg,
+                rgba(127, 127, 213, 0.1) 0%,
+                rgba(134, 168, 231, 0.1) 50%,
+                rgba(145, 234, 228, 0.1) 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+        }
+
+        .pricing-header {
             text-align: center;
-            padding: 20px;
+            margin-bottom: 50px;
         }
 
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
+        .pricing-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
 
-        .image-container {
-            width: 48%;
+        .pricing-header p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            opacity: 0.8;
         }
 
-        .image-container img {
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-section {
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .image-section img {
             width: 100%;
-            border-radius: 20px;
-            object-fit: cover; /* Crop the image */
+            height: auto;
+            display: block;
         }
 
-        table {
-            width: 48%;
+        .price-table {
+            width: 100%;
             border-collapse: collapse;
-            border-radius: 10px; /* Rounded corners */
-            overflow: hidden; /* Hide overflow to make rounded corners work */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+            margin-bottom: 30px;
         }
 
-        th, td {
+        .price-table th {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
             padding: 15px;
+            font-size: 1.1rem;
         }
 
-        th {
-            background: #f0f0f0; /* Light gray background color */
-            font-size: 24px;
+        .price-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1rem;
         }
 
-        td {
-            background-color: #ffffff; /* White background color for table cells */
-            font-size: 20px;
+        .price-table tr:last-child td {
+            border-bottom: none;
         }
 
-        h3 {
-            margin-top: 20px;
-            font-size: 24px;
+        .features-list {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px; /* Add this line to create spacing */
         }
 
-        ol {
-            text-align: left;
-            list-style-position: inside;
-            padding-left: 0; /* Remove default padding */
+        .features-list h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
-        ol li {
-            font-size: 18px;
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .features-list li {
             margin-bottom: 10px;
-            text-align: left; /* Align list items */
+            padding-left: 25px;
+            position: relative;
         }
 
-        .payment-container {
-            width: 48%;
-            padding: 20px;
-            background-color: #ffffff; /* White background color */
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
-            text-align: left; /* Align text to the left */
-        }
-
-        .payment-container h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .payment-container ol {
-            padding-left: 20px; /* Add left padding to the list */
-        }
-
-        .calculate-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .calculate-container input[type="number"] {
-            width: 100%;
-            max-width: 150px; /* Set maximum width */
-            padding: 10px;
-            border: 2px solid #ced4da;
-            border-radius: 5px;
-            margin-right: 10px;
-            box-sizing: border-box; /* Include padding and border in the width */
-        }
-
-        .calculate-container button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .calculate-container button:hover {
-            background-color: #0056b3;
-        }
-
-        .price {
-            font-size: 24px;
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
             font-weight: bold;
+        }
+
+        .calculate-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-top: 30px; /* Add this line to create spacing */
+        }
+
+        .calculator-form {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(127, 127, 213, 0.1);
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(127, 127, 213, 0.4);
+        }
+
+        .result {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-container {
+                margin-top: 80px;
+                padding: 0 15px;
+            }
+
+            .calculator-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .calculate-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="image-container">
-            <img src="../images/pay.png" alt="Image">
-        </div>
-        <table>
-            <tr>
-                <th>Weight in Kg</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>0-1</td>
-                <td>120</td>
-            </tr>
-            <tr>
-                <td>1-2</td>
-                <td>200</td>
-            </tr>
-            <tr>
-                <td>2-4</td>
-                <td>250</td>
-            </tr>
-            <tr>
-                <td>4-5</td>
-                <td>300</td>
-            </tr>
-            <tr>
-                <td>5-7</td>
-                <td>400</td>
-            </tr>
-            <tr>
-                <td>7-above</td>
-                <td>500</td>
-            </tr>
-        </table>
-
-        <div class="payment-container">
-            <h3>Payment Information</h3>
-            <ol>
-                <li>UPI: abcd@sbi.com</li>
-                <li>GPay: 6362786223</li>
-                <li>PhonePe: 3565656555</li>
-            </ol>
+    <div class="pricing-container">
+        <div class="pricing-header">
+            <h1>Simple, Transparent Pricing</h1>
+            <p>Choose the best shipping rate for your needs</p>
         </div>
 
-        <div class="payment-container">
-            <h3>Calculate Price</h3>
-            <div class="calculate-container">
-                <input type="number" id="weight" placeholder="Enter weight in Kg" min="0" step="0.01">
-                <button onclick="calculatePrice()">Calculate Price</button>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="image-section">
+                    <img src="../images/pay.png" alt="Pricing Image">
+                </div>
+                <table class="price-table">
+                    <tr>
+                        <th>Weight (kg)</th>
+                        <th>Price (₹)</th>
+                    </tr>
+                    <tr><td>0-1</td><td>120</td></tr>
+                    <tr><td>1-2</td><td>200</td></tr>
+                    <tr><td>2-3</td><td>300</td></tr>
+                    <tr><td>3-4</td><td>400</td></tr>
+                    <tr><td>4-5</td><td>500</td></tr>
+                </table>
             </div>
-            <div id="price" class="price"></div>
+
+            <div class="pricing-card">
+                <div class="features-list">
+                    <h3>Why Choose Us?</h3>
+                    <ul>
+                        <li>Real-time shipment tracking</li>
+                        <li>Secure handling of packages</li>
+                        <li>Insurance coverage available</li>
+                        <li>Door-to-door delivery</li>
+                        <li>Professional customer support</li>
+                        <li>Multiple payment options</li>
+                        <li>Express delivery available</li>
+                        <li>Nationwide coverage</li>
+                    </ul>
+                </div>
+
+                <div class="calculate-section">
+                    <h3>Calculate Shipping Cost</h3>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Enter Weight (kg)</label>
+                            <input type="number" class="form-control" id="weight" min="0" step="0.1">
+                        </div>
+                        <button class="calculate-btn" onclick="calculateCost()">Calculate</button>
+                    </div>
+                    <div class="result" id="result"></div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        function calculatePrice() {
-            var weight = parseFloat(document.getElementById('weight').value);
-            var price;
+        function calculateCost() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            let cost = 0;
 
-            if (weight <= 1) {
-                price = 120;
-            } else if (weight <= 2) {
-                price = 200;
-            } else if (weight <= 4) {
-                price = 250;
-            } else if (weight <= 5) {
-                price = 300;
-            } else if (weight <= 7) {
-                price = 400;
-            } else {
-                price = 500;
+            if (weight <= 0) {
+                alert('Please enter a valid weight');
+                return;
             }
 
-            document.getElementById('price').innerText = 'Price: ₹ ' + price;
+            if (weight <= 1) cost = 120;
+            else if (weight <= 2) cost = 200;
+            else if (weight <= 3) cost = 300;
+            else if (weight <= 4) cost = 400;
+            else cost = 500;
+
+            document.getElementById('result').innerHTML = `Estimated Cost: ₹${cost}`;
         }
     </script>
 </body>
