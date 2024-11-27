@@ -136,3 +136,19 @@ html,body{
 .container .mail-form p{
     font-size: 14px;
 }
+
+/* In your CSS file */
+.hero-section {
+    padding: 100px 0;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.hero-content {
+    margin-bottom: 40px;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+}
