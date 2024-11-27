@@ -10,11 +10,9 @@ include('header.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing | Rapid Courier</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         :root {
             --primary-color: #7f7fd5;
@@ -154,18 +152,18 @@ include('header.php');
             border-radius: 16px;
             padding: 30px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            margin-top: 30px; /* Add this line to create spacing */
+            margin-top: 30px;
         }
 
         .calculator-form {
             display: flex;
-            gap: 15px;
-            align-items: flex-end;
+            align-items: center;
+            gap: 20px;
             margin-bottom: 20px;
         }
 
         .form-group {
-            flex: 1;
+            flex: 3; /* Give more space to input */
         }
 
         .form-group label {
@@ -190,15 +188,22 @@ include('header.php');
         }
 
         .calculate-btn {
+            flex: 1;
+            min-width: 120px;
+            max-width: 120px; /* Fixed width */
+            height: 45px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--white);
             border: none;
-            padding: 12px 25px;
+            padding: 12px 15px;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .calculate-btn:hover {
@@ -226,11 +231,22 @@ include('header.php');
 
             .calculator-form {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
+            }
+
+            .form-group, 
+            .calculate-btn {
+                width: 100%;
+                max-width: 100%; /* Full width on mobile */
+            }
+
+            .form-control {
+                height: 45px;
             }
 
             .calculate-btn {
-                width: 100%;
+                height: 45px;
+                margin-top: 10px;
             }
         }
     </style>
