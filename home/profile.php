@@ -8,7 +8,7 @@ if(isset($_SESSION['uid'])){
 
 ?>
 <?php
-include('header.php');
+include('navbar.php');
 ?>
 
 <!DOCTYPE html>

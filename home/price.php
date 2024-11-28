@@ -4,7 +4,7 @@ if (!isset($_SESSION['uid'])) {
     header('location: ../index.php');
     exit();
 }
-include('header.php');
+include('navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ include('header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        :root {
+        .price-page {
             --primary-color: #7f7fd5;
             --secondary-color: #86a8e7;
             --tertiary-color: #91eae4;
@@ -24,7 +24,7 @@ include('header.php');
             --white: #FFFFFF;
         }
 
-        body {
+        .price-page body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg,
                 rgba(127, 127, 213, 0.1) 0%,
@@ -37,38 +37,38 @@ include('header.php');
             padding-top: 80px; /* Adjust based on your header's height */
         }
 
-        .pricing-container {
+        .price-page .pricing-container {
             max-width: 1200px;
             margin: 100px auto 40px;
             padding: 0 20px;
         }
 
-        .pricing-header {
+        .price-page .pricing-header {
             text-align: center;
             margin-bottom: 50px;
         }
 
-        .pricing-header h1 {
+        .price-page .pricing-header h1 {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 15px;
         }
 
-        .pricing-header p {
+        .price-page .pricing-header p {
             font-size: 1.1rem;
             color: var(--text-color);
             opacity: 0.8;
         }
 
-        .pricing-grid {
+        .price-page .pricing-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 50px;
         }
 
-        .pricing-card {
+        .price-page .pricing-card {
             background: var(--white);
             border-radius: 16px;
             padding: 30px;
@@ -76,71 +76,71 @@ include('header.php');
             transition: transform 0.3s ease;
         }
 
-        .pricing-card:hover {
+        .price-page .pricing-card:hover {
             transform: translateY(-5px);
         }
 
-        .image-section {
+        .price-page .image-section {
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 30px;
         }
 
-        .image-section img {
+        .price-page .image-section img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        .price-table {
+        .price-page .price-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
         }
 
-        .price-table th {
+        .price-page .price-table th {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--white);
             padding: 15px;
             font-size: 1.1rem;
         }
 
-        .price-table td {
+        .price-page .price-table td {
             padding: 12px 15px;
             border-bottom: 1px solid var(--border-color);
             font-size: 1rem;
         }
 
-        .price-table tr:last-child td {
+        .price-page .price-table tr:last-child td {
             border-bottom: none;
         }
 
-        .features-list {
+        .price-page .features-list {
             background: var(--light-gray);
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 30px; /* Add this line to create spacing */
         }
 
-        .features-list h3 {
+        .price-page .features-list h3 {
             color: var(--primary-color);
             margin-bottom: 15px;
             font-size: 1.2rem;
         }
 
-        .features-list ul {
+        .price-page .features-list ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .features-list li {
+        .price-page .features-list li {
             margin-bottom: 10px;
             padding-left: 25px;
             position: relative;
         }
 
-        .features-list li:before {
+        .price-page .features-list li:before {
             content: '✓';
             position: absolute;
             left: 0;
@@ -148,7 +148,7 @@ include('header.php');
             font-weight: bold;
         }
 
-        .calculate-section {
+        .price-page .calculate-section {
             background: var(--white);
             border-radius: 16px;
             padding: 30px;
@@ -156,25 +156,25 @@ include('header.php');
             margin-top: 30px;
         }
 
-        .calculator-form {
+        .price-page .calculator-form {
             display: flex;
             align-items: center;
             gap: 20px;
             margin-bottom: 20px;
         }
 
-        .form-group {
+        .price-page .form-group {
             flex: 3; /* Give more space to input */
         }
 
-        .form-group label {
+        .price-page .form-group label {
             display: block;
             margin-bottom: 8px;
             font-size: 0.9rem;
             color: var(--text-color);
         }
 
-        .form-control {
+        .price-page .form-control {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid var(--border-color);
@@ -183,12 +183,12 @@ include('header.php');
             transition: all 0.3s ease;
         }
 
-        .form-control:focus {
+        .price-page .form-control:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(127, 127, 213, 0.1);
         }
 
-        .calculate-btn {
+        .price-page .calculate-btn {
             flex: 1;
             min-width: 120px;
             max-width: 120px; /* Fixed width */
@@ -207,12 +207,12 @@ include('header.php');
             justify-content: center;
         }
 
-        .calculate-btn:hover {
+        .price-page .calculate-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(127, 127, 213, 0.4);
         }
 
-        .result {
+        .price-page .result {
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-color);
@@ -221,38 +221,38 @@ include('header.php');
         }
 
         @media (max-width: 768px) {
-            .pricing-grid {
+            .price-page .pricing-grid {
                 grid-template-columns: 1fr;
             }
 
-            .pricing-container {
+            .price-page .pricing-container {
                 margin-top: 80px;
                 padding: 0 15px;
             }
 
-            .calculator-form {
+            .price-page .calculator-form {
                 flex-direction: column;
                 gap: 15px;
             }
 
-            .form-group, 
-            .calculate-btn {
+            .price-page .form-group, 
+            .price-page .calculate-btn {
                 width: 100%;
                 max-width: 100%; /* Full width on mobile */
             }
 
-            .form-control {
+            .price-page .form-control {
                 height: 45px;
             }
 
-            .calculate-btn {
+            .price-page .calculate-btn {
                 height: 45px;
                 margin-top: 10px;
             }
         }
     </style>
 </head>
-<body>
+<body class="price-page">
     <div class="pricing-container">
         <div class="pricing-header">
             <h1>Simple, Transparent Pricing</h1>
