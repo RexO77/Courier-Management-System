@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['uid'])){
+if (!isset($_SESSION['uid'])) {
     header('location: ../index.php');
     exit();
 }
@@ -34,6 +34,7 @@ include('header.php');
             padding: 0;
             min-height: 100vh;
             color: var(--text-color);
+            padding-top: 80px; /* Adjust based on your header's height */
         }
 
         .pricing-container {
@@ -325,6 +326,9 @@ include('header.php');
             document.getElementById('result').innerHTML = `Estimated Cost: ₹${cost}`;
         }
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
 

@@ -1,3 +1,14 @@
+:root {
+    --primary-color: #7f7fd5;
+    --secondary-color: #86a8e7;
+    --tertiary-color: #91eae4;
+    --text-color: #2D3748;
+    --light-gray: #F7FAFC;
+    --border-color: #E2E8F0;
+    --white: #FFFFFF;
+    --accent-color: #3182CE;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -21,7 +32,7 @@
     height: 80px;
     text-align: center;
     
-    top: 0;
+    top: 5;
     background-color: #d5d8d8;
     
 }
@@ -37,8 +48,10 @@
     text-align: center;
 }
 body{
+    font-family: 'Poppins', sans-serif;
     margin:0;
     padding:0;
+    padding-top: 90px; /* Adjust based on the navbar's height and position */
 }
 /* style for navbar */
 .topnav {
@@ -155,8 +168,41 @@ html,body{
 
 /* Navbar Styles */
 .navbar {
-    height: 60px; /* Reduced height */
-    background: linear-gradient(135deg, var(--white), var(--light-gray)); /* Light gradient background */
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-brand img {
+    height: 40px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: var(--primary-color);
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    font-weight: bold;
+    color: var(--primary-color);
 }
 
 .navbar-toggler {
@@ -164,12 +210,13 @@ html,body{
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%237f7fd5' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' \
+xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%237f7fd5' stroke-width='2' \
+stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-.navbar-nav .nav-item .nav-link.active {
-    font-weight: bold;
-    color: var(--primary-color);
+.fixed-top {
+    top: 0;
 }
 
 @media (max-width: 768px) {

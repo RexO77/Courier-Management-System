@@ -39,6 +39,7 @@ include('header.php');
             min-height: 100vh;
             margin: 0; /* Remove margin */
             padding: 0; /* Remove padding */
+            padding-top: 80px; /* Adjust based on your header's height */
         }
 
         .profile-card {
@@ -131,16 +132,7 @@ include('header.php');
             }
         }
 
-        /* Add navbar fixes */
-        .bs-example {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+        
 
         /* Add margin to main content container */
         .container {
