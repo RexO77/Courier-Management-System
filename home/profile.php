@@ -136,8 +136,8 @@ include('navbar.php');
 
         /* Add margin to main content container */
         .container {
-            margin-top: 100px; /* Adjust based on navbar height */
-            padding: 20px;
+            margin-top: 10px; /* Reduced margin to fix navbar position */
+            padding: 0px;
         }
     </style>
 </head>

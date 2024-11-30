@@ -4,7 +4,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <a href="home.php" class="navbar-brand">
-        <img src="../images/Logo.jpg" alt="Rapid Courier Service" style="height:40px;">
+        <img src="../images/Logo.png" alt="Rapid Courier Service" style="height:40px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
         <span class="navbar-toggler-icon"></span>

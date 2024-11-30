@@ -4,7 +4,7 @@ if (!isset($_SESSION['uid'])) {
     header('location: ../index.php');
     exit();
 }
-include('navbar.php');
+include('header.php');
 ?>
 
 <!DOCTYPE html>

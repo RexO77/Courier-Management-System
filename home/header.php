@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <title>Rapid Courier Service</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Include Bootstrap CSS and custom fonts -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -21,36 +19,41 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            margin-top: 80px; /* Adjust based on navbar height */
+            margin-top: 80px;
         }
 
         .navbar {
-            height: 60px; /* Reduced height */
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* For Safari support */
+            -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
             position: fixed;
             top: 10px;
             left: 50%;
-            right: 0;
             transform: translateX(-50%);
             width: calc(100% - 40px);
             z-index: 1000;
+            padding: 10px 20px;
         }
 
         .navbar-brand img {
-            height: 40px; /* Reduced logo size */
+            height: 50px;
             width: auto;
             border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.05);
         }
 
         .navbar-nav .nav-item .nav-link {
             color: var(--text-color);
-            font-size: 16px; /* Reduced font size */
+            font-size: 16px;
             font-weight: 500;
             transition: color 0.3s ease;
+            padding: 8px 16px;
         }
 
         .navbar-nav .nav-item .nav-link:hover {
@@ -58,68 +61,59 @@
         }
 
         .navbar-nav .nav-item .nav-link.active {
-            font-weight: bold;
+            font-weight: 600;
             color: var(--primary-color);
         }
-
-        .navbar-toggler {
-            border-color: var(--primary-color);
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(127, 127, 213, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-        }
-
+        
         @media (max-width: 768px) {
+            .navbar {
+                width: 100%;
+                top: 0;
+                border-radius: 0;
+            }
+            
+            .navbar-brand img {
+                height: 40px;
+            }
+
+            .navbar-nav {
+                margin-top: 10px;
+            }
+
             .navbar-nav .nav-item {
                 text-align: center;
-            }
-
-            .navbar {
-                height: auto;
-                border-radius: 0;
-                width: 100%;
-                left: 0;
-                transform: none;
-                top: 0;
-            }
-
-            body {
-                margin-top: 0;
             }
         }
     </style>
 </head>
 <body>
-    <?php
-    $currentPage = basename($_SERVER['PHP_SELF']);
-    ?>
-    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
+    <nav class="navbar navbar-expand-md navbar-light">
         <a href="home.php" class="navbar-brand">
-            <img src="../images/Logo.jpg" alt="Rapid Courier Service" style="height:40px;">
+            <img src="../images/Logo.png" alt="Rapid Courier Service">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item <?php if($currentPage == 'home.php') echo 'active'; ?>">
-                    <a href="home.php" class="nav-link">Home</a>
+                <li class="nav-item">
+                    <a href="home.php" class="nav-link <?php if($currentPage == 'home.php') echo 'active'; ?>">Home</a>
                 </li>
-                <li class="nav-item <?php if($currentPage == 'price.php') echo 'active'; ?>">
-                    <a href="price.php" class="nav-link">Price</a>
+                <li class="nav-item">
+                    <a href="price.php" class="nav-link <?php if($currentPage == 'price.php') echo 'active'; ?>">Price</a>
                 </li>
-                <li class="nav-item <?php if($currentPage == 'courierMenu.php') echo 'active'; ?>">
-                    <a href="courierMenu.php" class="nav-link">Courier</a>
+                <li class="nav-item">
+                    <a href="courierMenu.php" class="nav-link <?php if($currentPage == 'courierMenu.php') echo 'active'; ?>">Courier</a>
                 </li>
-                <li class="nav-item <?php if($currentPage == 'trackMenu.php') echo 'active'; ?>">
-                    <a href="trackMenu.php" class="nav-link">Track</a>
+                <li class="nav-item">
+                    <a href="trackMenu.php" class="nav-link <?php if($currentPage == 'trackMenu.php') echo 'active'; ?>">Track</a>
                 </li>
-                <li class="nav-item <?php if($currentPage == 'profile.php') echo 'active'; ?>">
-                    <a href="profile.php" class="nav-link">Profile</a>
+                <li class="nav-item">
+                    <a href="profile.php" class="nav-link <?php if($currentPage == 'profile.php') echo 'active'; ?>">Profile</a>
                 </li>
-                <li class="nav-item <?php if($currentPage == 'contactUs.php') echo 'active'; ?>">
-                    <a href="contactUs.php" class="nav-link">Contact Us</a>
+                <li class="nav-item">
+                    <a href="contactUs.php" class="nav-link <?php if($currentPage == 'contactUs.php') echo 'active'; ?>">Contact Us</a>
                 </li>
                 <li class="nav-item">
                     <a href="../admin/logout.php" class="nav-link">Admin Page</a>
@@ -130,7 +124,7 @@
             </ul>
         </div>
     </nav>
-    <!-- Bootstrap JS and dependencies -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
