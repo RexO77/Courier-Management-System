@@ -213,7 +213,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     <div class="container">
         <!-- Left Section -->
         <div class="info-container">
-            <img src="images/Logo.jpg" alt="Courier Logo">
+            <img src="images/Logo.png" alt="Courier Logo">
             <h2>Courier Management System</h2>
             <p>Handling every item like your mother does.</p>
         </div>
