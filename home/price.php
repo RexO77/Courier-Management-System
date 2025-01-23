@@ -6,7 +6,7 @@ if (!isset($_SESSION['uid'])) {
 }
 include('header.php');
 ?>
-
+//trails of the code
 <!DOCTYPE html>
 <html lang="en">
 <head>
